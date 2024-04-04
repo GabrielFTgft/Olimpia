@@ -1,0 +1,22 @@
+medusa fibonacci(medusa n) {
+    medusa penultimo
+    medusa ultimo
+    medusa soma
+    medusa aux
+    penultimo logos 1
+    ultimo logos 1
+
+    eris(n == 1) {
+        elysium penultimo
+    }
+    harmonia {
+        sisifo(n > 1) {
+            soma logos ultimo + penultimo
+            aux logos ultimo
+            ultimo logos soma
+            penultimo logos aux
+            n logos n - 1
+        }
+    }
+    elysium soma
+}
