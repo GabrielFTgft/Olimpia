@@ -1,0 +1,74 @@
+2024-07-22 22:53:56:830 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Olimpia (RULES (RULE inicio (BLOCK (ALT algoritmo EOF))) (RULE algoritmo (BLOCK (ALT (* (BLOCK (ALT instrucao)))))) (RULE instrucao (BLOCK (ALT declaracao) (ALT atribuicao) (ALT acao) (ALT controle) (ALT repeticao) (ALT funcao) (ALT limbo))) (RULE declaracao (BLOCK (ALT PEGASO DIO) (ALT PEGASO DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE atribuicao (BLOCK (ALT DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE acao (BLOCK (ALT ECO (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))) (ALT PROF DIO))) (RULE operacao (BLOCK (ALT operando operacao_calda))) (RULE operando (BLOCK (ALT DIO) (ALT HERMES))) (RULE operacao_calda (BLOCK (ALT HEFESTO operando (* (BLOCK (ALT operacao_calda)))))) (RULE controle (BLOCK (ALT ERI HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS (? (BLOCK (ALT senao)))))) (RULE senao (BLOCK (ALT HAR JA (* (BLOCK (ALT instrucao))) NUS))) (RULE cond (BLOCK (ALT operando AFRODITE operando (* (BLOCK (ALT booleano)))))) (RULE booleano (BLOCK (ALT TEMIS HEC cond ATE))) (RULE repeticao (BLOCK (ALT SIS HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS))) (RULE funcao (BLOCK (ALT PEGASO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) ELY (BLOCK (ALT DIO) (ALT HERMES)) NUS))) (RULE limbo (BLOCK (ALT CAO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) NUS))) (RULE PEGASO (BLOCK (ALT 'medusa') (ALT 'poseidon') (ALT 'atena'))) (RULE HEC (BLOCK (ALT '('))) (RULE ATE (BLOCK (ALT ')'))) (RULE JA (BLOCK (ALT '{'))) (RULE NUS (BLOCK (ALT '}'))) (RULE CAO (BLOCK (ALT 'caos'))) (RULE ECO (BLOCK (ALT 'eco'))) (RULE PROF (BLOCK (ALT 'profecia'))) (RULE SIS (BLOCK (ALT 'sisifo'))) (RULE ERI (BLOCK (ALT 'eris'))) (RULE HAR (BLOCK (ALT 'harmonia'))) (RULE LOG (BLOCK (ALT 'logos'))) (RULE HEFESTO (BLOCK (ALT '+') (ALT '-') (ALT '*') (ALT '/'))) (RULE TEMIS (BLOCK (ALT 'nemesis') (ALT 'eros'))) (RULE AFRODITE (BLOCK (ALT '<') (ALT '>') (ALT '>=') (ALT '<=') (ALT '=') (ALT '!='))) (RULE ELY (BLOCK (ALT 'elysium'))) (RULE LETRA (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE DIGITO (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE DIO (BLOCK (ALT LETRA (* (BLOCK (ALT DIGITO) (ALT LETRA)))))) (RULE HERMES (BLOCK (ALT (+ (BLOCK (ALT DIGITO))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT DIGITO))))))))) (RULE APORIA (BLOCK (LEXER_ALT_ACTION (ALT (* (BLOCK (ALT [ \r\t\n])))) skip))) (RULE ErrorChar (BLOCK (ALT .)))))
+2024-07-22 22:53:56:854 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Olimpia (RULES (RULE inicio (BLOCK (ALT algoritmo EOF))) (RULE algoritmo (BLOCK (ALT (* (BLOCK (ALT instrucao)))))) (RULE instrucao (BLOCK (ALT declaracao) (ALT atribuicao) (ALT acao) (ALT controle) (ALT repeticao) (ALT funcao) (ALT limbo))) (RULE declaracao (BLOCK (ALT PEGASO DIO) (ALT PEGASO DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE atribuicao (BLOCK (ALT DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE acao (BLOCK (ALT ECO (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))) (ALT PROF DIO))) (RULE operacao (BLOCK (ALT operando operacao_calda))) (RULE operando (BLOCK (ALT (SET DIO HERMES)))) (RULE operacao_calda (BLOCK (ALT HEFESTO operando (* (BLOCK (ALT operacao_calda)))))) (RULE controle (BLOCK (ALT ERI HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS (? (BLOCK (ALT senao)))))) (RULE senao (BLOCK (ALT HAR JA (* (BLOCK (ALT instrucao))) NUS))) (RULE cond (BLOCK (ALT operando AFRODITE operando (* (BLOCK (ALT booleano)))))) (RULE booleano (BLOCK (ALT TEMIS HEC cond ATE))) (RULE repeticao (BLOCK (ALT SIS HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS))) (RULE funcao (BLOCK (ALT PEGASO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) ELY (SET DIO HERMES) NUS))) (RULE limbo (BLOCK (ALT CAO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) NUS))) (RULE PEGASO (BLOCK (ALT 'medusa') (ALT 'poseidon') (ALT 'atena'))) (RULE HEC (BLOCK (ALT '('))) (RULE ATE (BLOCK (ALT ')'))) (RULE JA (BLOCK (ALT '{'))) (RULE NUS (BLOCK (ALT '}'))) (RULE CAO (BLOCK (ALT 'caos'))) (RULE ECO (BLOCK (ALT 'eco'))) (RULE PROF (BLOCK (ALT 'profecia'))) (RULE SIS (BLOCK (ALT 'sisifo'))) (RULE ERI (BLOCK (ALT 'eris'))) (RULE HAR (BLOCK (ALT 'harmonia'))) (RULE LOG (BLOCK (ALT 'logos'))) (RULE HEFESTO (BLOCK (ALT (SET '+' '-' '*' '/')))) (RULE TEMIS (BLOCK (ALT 'nemesis') (ALT 'eros'))) (RULE AFRODITE (BLOCK (ALT '<') (ALT '>') (ALT '>=') (ALT '<=') (ALT '=') (ALT '!='))) (RULE ELY (BLOCK (ALT 'elysium'))) (RULE LETRA (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE DIGITO (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE DIO (BLOCK (ALT LETRA (* (BLOCK (ALT DIGITO) (ALT LETRA)))))) (RULE HERMES (BLOCK (ALT (+ (BLOCK (ALT DIGITO))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT DIGITO))))))))) (RULE APORIA (BLOCK (LEXER_ALT_ACTION (ALT (* (BLOCK (ALT [ \r\t\n])))) skip))) (RULE ErrorChar (BLOCK (ALT .)))))
+2024-07-22 22:53:56:877 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Olimpia (RULES (RULE inicio (BLOCK (ALT algoritmo EOF))) (RULE algoritmo (BLOCK (ALT (* (BLOCK (ALT instrucao)))))) (RULE instrucao (BLOCK (ALT declaracao) (ALT atribuicao) (ALT acao) (ALT controle) (ALT repeticao) (ALT funcao) (ALT limbo))) (RULE declaracao (BLOCK (ALT PEGASO DIO) (ALT PEGASO DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE atribuicao (BLOCK (ALT DIO LOG (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))))) (RULE acao (BLOCK (ALT ECO (BLOCK (ALT DIO) (ALT HERMES) (ALT operacao))) (ALT PROF DIO))) (RULE operacao (BLOCK (ALT operando operacao_calda))) (RULE operando (BLOCK (ALT (SET DIO HERMES)))) (RULE operacao_calda (BLOCK (ALT HEFESTO operando (* (BLOCK (ALT operacao_calda)))))) (RULE controle (BLOCK (ALT ERI HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS (? (BLOCK (ALT senao)))))) (RULE senao (BLOCK (ALT HAR JA (* (BLOCK (ALT instrucao))) NUS))) (RULE cond (BLOCK (ALT operando AFRODITE operando (* (BLOCK (ALT booleano)))))) (RULE booleano (BLOCK (ALT TEMIS HEC cond ATE))) (RULE repeticao (BLOCK (ALT SIS HEC cond ATE JA (* (BLOCK (ALT instrucao))) NUS))) (RULE funcao (BLOCK (ALT PEGASO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) ELY (SET DIO HERMES) NUS))) (RULE limbo (BLOCK (ALT CAO DIO HEC (* (BLOCK (ALT declaracao))) ATE JA (* (BLOCK (ALT instrucao))) NUS)))))
+2024-07-22 22:53:56:877 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR OlimpiaLexer (RULES (RULE PEGASO (BLOCK (ALT 'medusa') (ALT 'poseidon') (ALT 'atena'))) (RULE HEC (BLOCK (ALT '('))) (RULE ATE (BLOCK (ALT ')'))) (RULE JA (BLOCK (ALT '{'))) (RULE NUS (BLOCK (ALT '}'))) (RULE CAO (BLOCK (ALT 'caos'))) (RULE ECO (BLOCK (ALT 'eco'))) (RULE PROF (BLOCK (ALT 'profecia'))) (RULE SIS (BLOCK (ALT 'sisifo'))) (RULE ERI (BLOCK (ALT 'eris'))) (RULE HAR (BLOCK (ALT 'harmonia'))) (RULE LOG (BLOCK (ALT 'logos'))) (RULE HEFESTO (BLOCK (ALT (SET '+' '-' '*' '/')))) (RULE TEMIS (BLOCK (ALT 'nemesis') (ALT 'eros'))) (RULE AFRODITE (BLOCK (ALT '<') (ALT '>') (ALT '>=') (ALT '<=') (ALT '=') (ALT '!='))) (RULE ELY (BLOCK (ALT 'elysium'))) (RULE LETRA (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE DIGITO (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE DIO (BLOCK (ALT LETRA (* (BLOCK (ALT DIGITO) (ALT LETRA)))))) (RULE HERMES (BLOCK (ALT (+ (BLOCK (ALT DIGITO))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT DIGITO))))))))) (RULE APORIA (BLOCK (LEXER_ALT_ACTION (ALT (* (BLOCK (ALT [ \r\t\n])))) skip))) (RULE ErrorChar (BLOCK (ALT .)))))
+2024-07-22 22:53:57:115 semantics LogManager.java:25 tokens={EOF=-1, PEGASO=1, HEC=2, ATE=3, JA=4, NUS=5, CAO=6, ECO=7, PROF=8, SIS=9, ERI=10, HAR=11, LOG=12, HEFESTO=13, TEMIS=14, AFRODITE=15, ELY=16, DIO=17, HERMES=18, APORIA=19, ErrorChar=20}
+2024-07-22 22:53:57:115 semantics LogManager.java:25 strings={'('=2, ')'=3, '{'=4, '}'=5, 'caos'=6, 'eco'=7, 'profecia'=8, 'sisifo'=9, 'eris'=10, 'harmonia'=11, 'logos'=12, 'elysium'=16}
+2024-07-22 22:53:57:124 LL1 LogManager.java:25 
+DECISION 0 in rule algoritmo
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 look=[{1, 6..10, 17}, <EOF>]
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 
+DECISION 1 in rule instrucao
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 look=[1, 17, {7..8}, 10, 9, 1, 6]
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 
+DECISION 2 in rule declaracao
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 look=[17, 18, {17..18}]
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 
+DECISION 3 in rule declaracao
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 look=[1, 1]
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 
+DECISION 4 in rule atribuicao
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 look=[17, 18, {17..18}]
+2024-07-22 22:53:57:125 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 
+DECISION 5 in rule acao
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 look=[17, 18, {17..18}]
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 
+DECISION 6 in rule acao
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 look=[7, 8]
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 
+DECISION 7 in rule operacao_calda
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 look=[13, {<EOF>, 1, 3, 5..10, 13, 16..17}]
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 LL(1)? false
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 
+DECISION 8 in rule controle
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 look=[{1, 6..10, 17}, 5]
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:126 LL1 LogManager.java:25 
+DECISION 9 in rule controle
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 look=[11, {<EOF>, 1, 5..10, 16..17}]
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 
+DECISION 10 in rule senao
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 look=[{1, 6..10, 17}, 5]
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 
+DECISION 11 in rule cond
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 look=[14, 3]
+2024-07-22 22:53:57:127 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 
+DECISION 12 in rule repeticao
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 look=[{1, 6..10, 17}, 5]
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 
+DECISION 13 in rule funcao
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 look=[1, 3]
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 
+DECISION 14 in rule funcao
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 look=[{1, 6..10, 17}, 16]
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 
+DECISION 15 in rule limbo
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 look=[1, 3]
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 LL(1)? true
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 
+DECISION 16 in rule limbo
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 look=[{1, 6..10, 17}, 5]
+2024-07-22 22:53:57:128 LL1 LogManager.java:25 LL(1)? true
