@@ -1,9 +1,0 @@
-medusa fatorial(medusa n) {
-    medusa fat
-    fat logos 1
-    sisifo(n > 0) {
-        fat logos fat*n
-        n logos n-1
-    }
-    elysium fat
-}
