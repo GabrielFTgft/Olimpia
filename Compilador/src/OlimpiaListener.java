@@ -7,75 +7,89 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface OlimpiaListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#inicio}.
+	 * Enter a parse tree produced by the {@code OInicio}
+	 * labeled alternative in {@link OlimpiaParser#inicio}.
 	 * @param ctx the parse tree
 	 */
-	void enterInicio(OlimpiaParser.InicioContext ctx);
+	void enterOInicio(OlimpiaParser.OInicioContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#inicio}.
+	 * Exit a parse tree produced by the {@code OInicio}
+	 * labeled alternative in {@link OlimpiaParser#inicio}.
 	 * @param ctx the parse tree
 	 */
-	void exitInicio(OlimpiaParser.InicioContext ctx);
+	void exitOInicio(OlimpiaParser.OInicioContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#algoritmo}.
+	 * Enter a parse tree produced by the {@code OAlgoritmo}
+	 * labeled alternative in {@link OlimpiaParser#algoritmo}.
 	 * @param ctx the parse tree
 	 */
-	void enterAlgoritmo(OlimpiaParser.AlgoritmoContext ctx);
+	void enterOAlgoritmo(OlimpiaParser.OAlgoritmoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#algoritmo}.
+	 * Exit a parse tree produced by the {@code OAlgoritmo}
+	 * labeled alternative in {@link OlimpiaParser#algoritmo}.
 	 * @param ctx the parse tree
 	 */
-	void exitAlgoritmo(OlimpiaParser.AlgoritmoContext ctx);
+	void exitOAlgoritmo(OlimpiaParser.OAlgoritmoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#instrucao}.
+	 * Enter a parse tree produced by the {@code OInstrucao}
+	 * labeled alternative in {@link OlimpiaParser#instrucao}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstrucao(OlimpiaParser.InstrucaoContext ctx);
+	void enterOInstrucao(OlimpiaParser.OInstrucaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#instrucao}.
+	 * Exit a parse tree produced by the {@code OInstrucao}
+	 * labeled alternative in {@link OlimpiaParser#instrucao}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstrucao(OlimpiaParser.InstrucaoContext ctx);
+	void exitOInstrucao(OlimpiaParser.OInstrucaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#declaracao}.
+	 * Enter a parse tree produced by the {@code ODeclaracao}
+	 * labeled alternative in {@link OlimpiaParser#declaracao}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao(OlimpiaParser.DeclaracaoContext ctx);
+	void enterODeclaracao(OlimpiaParser.ODeclaracaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#declaracao}.
+	 * Exit a parse tree produced by the {@code ODeclaracao}
+	 * labeled alternative in {@link OlimpiaParser#declaracao}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao(OlimpiaParser.DeclaracaoContext ctx);
+	void exitODeclaracao(OlimpiaParser.ODeclaracaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#atribuicao}.
+	 * Enter a parse tree produced by the {@code OAtribuicao}
+	 * labeled alternative in {@link OlimpiaParser#atribuicao}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtribuicao(OlimpiaParser.AtribuicaoContext ctx);
+	void enterOAtribuicao(OlimpiaParser.OAtribuicaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#atribuicao}.
+	 * Exit a parse tree produced by the {@code OAtribuicao}
+	 * labeled alternative in {@link OlimpiaParser#atribuicao}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtribuicao(OlimpiaParser.AtribuicaoContext ctx);
+	void exitOAtribuicao(OlimpiaParser.OAtribuicaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#acao}.
+	 * Enter a parse tree produced by the {@code OAcao}
+	 * labeled alternative in {@link OlimpiaParser#acao}.
 	 * @param ctx the parse tree
 	 */
-	void enterAcao(OlimpiaParser.AcaoContext ctx);
+	void enterOAcao(OlimpiaParser.OAcaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#acao}.
+	 * Exit a parse tree produced by the {@code OAcao}
+	 * labeled alternative in {@link OlimpiaParser#acao}.
 	 * @param ctx the parse tree
 	 */
-	void exitAcao(OlimpiaParser.AcaoContext ctx);
+	void exitOAcao(OlimpiaParser.OAcaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#operacao}.
+	 * Enter a parse tree produced by the {@code OOperacao}
+	 * labeled alternative in {@link OlimpiaParser#operacao}.
 	 * @param ctx the parse tree
 	 */
-	void enterOperacao(OlimpiaParser.OperacaoContext ctx);
+	void enterOOperacao(OlimpiaParser.OOperacaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#operacao}.
+	 * Exit a parse tree produced by the {@code OOperacao}
+	 * labeled alternative in {@link OlimpiaParser#operacao}.
 	 * @param ctx the parse tree
 	 */
-	void exitOperacao(OlimpiaParser.OperacaoContext ctx);
+	void exitOOperacao(OlimpiaParser.OOperacaoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link OlimpiaParser#operando}.
 	 * @param ctx the parse tree
@@ -87,83 +101,111 @@ public interface OlimpiaListener extends ParseTreeListener {
 	 */
 	void exitOperando(OlimpiaParser.OperandoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#operacao_calda}.
+	 * Enter a parse tree produced by the {@code OOperacao_calda}
+	 * labeled alternative in {@link OlimpiaParser#operacao_calda}.
 	 * @param ctx the parse tree
 	 */
-	void enterOperacao_calda(OlimpiaParser.Operacao_caldaContext ctx);
+	void enterOOperacao_calda(OlimpiaParser.OOperacao_caldaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#operacao_calda}.
+	 * Exit a parse tree produced by the {@code OOperacao_calda}
+	 * labeled alternative in {@link OlimpiaParser#operacao_calda}.
 	 * @param ctx the parse tree
 	 */
-	void exitOperacao_calda(OlimpiaParser.Operacao_caldaContext ctx);
+	void exitOOperacao_calda(OlimpiaParser.OOperacao_caldaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#controle}.
+	 * Enter a parse tree produced by the {@code OControle}
+	 * labeled alternative in {@link OlimpiaParser#controle}.
 	 * @param ctx the parse tree
 	 */
-	void enterControle(OlimpiaParser.ControleContext ctx);
+	void enterOControle(OlimpiaParser.OControleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#controle}.
+	 * Exit a parse tree produced by the {@code OControle}
+	 * labeled alternative in {@link OlimpiaParser#controle}.
 	 * @param ctx the parse tree
 	 */
-	void exitControle(OlimpiaParser.ControleContext ctx);
+	void exitOControle(OlimpiaParser.OControleContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#senao}.
+	 * Enter a parse tree produced by the {@code OSe}
+	 * labeled alternative in {@link OlimpiaParser#se}.
 	 * @param ctx the parse tree
 	 */
-	void enterSenao(OlimpiaParser.SenaoContext ctx);
+	void enterOSe(OlimpiaParser.OSeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#senao}.
+	 * Exit a parse tree produced by the {@code OSe}
+	 * labeled alternative in {@link OlimpiaParser#se}.
 	 * @param ctx the parse tree
 	 */
-	void exitSenao(OlimpiaParser.SenaoContext ctx);
+	void exitOSe(OlimpiaParser.OSeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#cond}.
+	 * Enter a parse tree produced by the {@code OSenao}
+	 * labeled alternative in {@link OlimpiaParser#senao}.
 	 * @param ctx the parse tree
 	 */
-	void enterCond(OlimpiaParser.CondContext ctx);
+	void enterOSenao(OlimpiaParser.OSenaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#cond}.
+	 * Exit a parse tree produced by the {@code OSenao}
+	 * labeled alternative in {@link OlimpiaParser#senao}.
 	 * @param ctx the parse tree
 	 */
-	void exitCond(OlimpiaParser.CondContext ctx);
+	void exitOSenao(OlimpiaParser.OSenaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#booleano}.
+	 * Enter a parse tree produced by the {@code OCond}
+	 * labeled alternative in {@link OlimpiaParser#cond}.
 	 * @param ctx the parse tree
 	 */
-	void enterBooleano(OlimpiaParser.BooleanoContext ctx);
+	void enterOCond(OlimpiaParser.OCondContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#booleano}.
+	 * Exit a parse tree produced by the {@code OCond}
+	 * labeled alternative in {@link OlimpiaParser#cond}.
 	 * @param ctx the parse tree
 	 */
-	void exitBooleano(OlimpiaParser.BooleanoContext ctx);
+	void exitOCond(OlimpiaParser.OCondContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#repeticao}.
+	 * Enter a parse tree produced by the {@code OBooleano}
+	 * labeled alternative in {@link OlimpiaParser#booleano}.
 	 * @param ctx the parse tree
 	 */
-	void enterRepeticao(OlimpiaParser.RepeticaoContext ctx);
+	void enterOBooleano(OlimpiaParser.OBooleanoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#repeticao}.
+	 * Exit a parse tree produced by the {@code OBooleano}
+	 * labeled alternative in {@link OlimpiaParser#booleano}.
 	 * @param ctx the parse tree
 	 */
-	void exitRepeticao(OlimpiaParser.RepeticaoContext ctx);
+	void exitOBooleano(OlimpiaParser.OBooleanoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#funcao}.
+	 * Enter a parse tree produced by the {@code ORepeticao}
+	 * labeled alternative in {@link OlimpiaParser#repeticao}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncao(OlimpiaParser.FuncaoContext ctx);
+	void enterORepeticao(OlimpiaParser.ORepeticaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#funcao}.
+	 * Exit a parse tree produced by the {@code ORepeticao}
+	 * labeled alternative in {@link OlimpiaParser#repeticao}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncao(OlimpiaParser.FuncaoContext ctx);
+	void exitORepeticao(OlimpiaParser.ORepeticaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link OlimpiaParser#limbo}.
+	 * Enter a parse tree produced by the {@code OFuncao}
+	 * labeled alternative in {@link OlimpiaParser#funcao}.
 	 * @param ctx the parse tree
 	 */
-	void enterLimbo(OlimpiaParser.LimboContext ctx);
+	void enterOFuncao(OlimpiaParser.OFuncaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link OlimpiaParser#limbo}.
+	 * Exit a parse tree produced by the {@code OFuncao}
+	 * labeled alternative in {@link OlimpiaParser#funcao}.
 	 * @param ctx the parse tree
 	 */
-	void exitLimbo(OlimpiaParser.LimboContext ctx);
+	void exitOFuncao(OlimpiaParser.OFuncaoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OLimbo}
+	 * labeled alternative in {@link OlimpiaParser#limbo}.
+	 * @param ctx the parse tree
+	 */
+	void enterOLimbo(OlimpiaParser.OLimboContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OLimbo}
+	 * labeled alternative in {@link OlimpiaParser#limbo}.
+	 * @param ctx the parse tree
+	 */
+	void exitOLimbo(OlimpiaParser.OLimboContext ctx);
 }

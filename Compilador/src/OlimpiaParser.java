@@ -18,17 +18,18 @@ public class OlimpiaParser extends Parser {
 	public static final int
 		PEGASO=1, HEC=2, ATE=3, JA=4, NUS=5, CAO=6, ECO=7, PROF=8, SIS=9, ERI=10, 
 		HAR=11, LOG=12, HEFESTO=13, TEMIS=14, AFRODITE=15, ELY=16, DIO=17, HERMES=18, 
-		APORIA=19, ErrorChar=20;
+		HELIOS=19, HESTIA=20, APORIA=21, ErrorChar=22;
 	public static final int
 		RULE_inicio = 0, RULE_algoritmo = 1, RULE_instrucao = 2, RULE_declaracao = 3, 
 		RULE_atribuicao = 4, RULE_acao = 5, RULE_operacao = 6, RULE_operando = 7, 
-		RULE_operacao_calda = 8, RULE_controle = 9, RULE_senao = 10, RULE_cond = 11, 
-		RULE_booleano = 12, RULE_repeticao = 13, RULE_funcao = 14, RULE_limbo = 15;
+		RULE_operacao_calda = 8, RULE_controle = 9, RULE_se = 10, RULE_senao = 11, 
+		RULE_cond = 12, RULE_booleano = 13, RULE_repeticao = 14, RULE_funcao = 15, 
+		RULE_limbo = 16;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"inicio", "algoritmo", "instrucao", "declaracao", "atribuicao", "acao", 
-			"operacao", "operando", "operacao_calda", "controle", "senao", "cond", 
-			"booleano", "repeticao", "funcao", "limbo"
+			"operacao", "operando", "operacao_calda", "controle", "se", "senao", 
+			"cond", "booleano", "repeticao", "funcao", "limbo"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -44,7 +45,7 @@ public class OlimpiaParser extends Parser {
 		return new String[] {
 			null, "PEGASO", "HEC", "ATE", "JA", "NUS", "CAO", "ECO", "PROF", "SIS", 
 			"ERI", "HAR", "LOG", "HEFESTO", "TEMIS", "AFRODITE", "ELY", "DIO", "HERMES", 
-			"APORIA", "ErrorChar"
+			"HELIOS", "HESTIA", "APORIA", "ErrorChar"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -100,21 +101,30 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class InicioContext extends ParserRuleContext {
-		public AlgoritmoContext algoritmo() {
-			return getRuleContext(AlgoritmoContext.class,0);
-		}
-		public TerminalNode EOF() { return getToken(OlimpiaParser.EOF, 0); }
 		public InicioContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_inicio; }
+	 
+		public InicioContext() { }
+		public void copyFrom(InicioContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OInicioContext extends InicioContext {
+		public AlgoritmoContext algoritmo() {
+			return getRuleContext(AlgoritmoContext.class,0);
+		}
+		public TerminalNode EOF() { return getToken(OlimpiaParser.EOF, 0); }
+		public OInicioContext(InicioContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterInicio(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOInicio(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitInicio(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOInicio(this);
 		}
 	}
 
@@ -122,11 +132,12 @@ public class OlimpiaParser extends Parser {
 		InicioContext _localctx = new InicioContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_inicio);
 		try {
+			_localctx = new OInicioContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32);
+			setState(34);
 			algoritmo();
-			setState(33);
+			setState(35);
 			match(EOF);
 			}
 		}
@@ -143,23 +154,32 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AlgoritmoContext extends ParserRuleContext {
+		public AlgoritmoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_algoritmo; }
+	 
+		public AlgoritmoContext() { }
+		public void copyFrom(AlgoritmoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OAlgoritmoContext extends AlgoritmoContext {
 		public List<InstrucaoContext> instrucao() {
 			return getRuleContexts(InstrucaoContext.class);
 		}
 		public InstrucaoContext instrucao(int i) {
 			return getRuleContext(InstrucaoContext.class,i);
 		}
-		public AlgoritmoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_algoritmo; }
+		public OAlgoritmoContext(AlgoritmoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterAlgoritmo(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOAlgoritmo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitAlgoritmo(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOAlgoritmo(this);
 		}
 	}
 
@@ -168,22 +188,23 @@ public class OlimpiaParser extends Parser {
 		enterRule(_localctx, 2, RULE_algoritmo);
 		int _la;
 		try {
+			_localctx = new OAlgoritmoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38);
+			setState(38); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
+			do {
 				{
 				{
-				setState(35);
+				setState(37);
 				instrucao();
 				}
 				}
-				setState(40);
+				setState(40); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			}
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -199,6 +220,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class InstrucaoContext extends ParserRuleContext {
+		public InstrucaoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_instrucao; }
+	 
+		public InstrucaoContext() { }
+		public void copyFrom(InstrucaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OInstrucaoContext extends InstrucaoContext {
 		public DeclaracaoContext declaracao() {
 			return getRuleContext(DeclaracaoContext.class,0);
 		}
@@ -220,17 +253,14 @@ public class OlimpiaParser extends Parser {
 		public LimboContext limbo() {
 			return getRuleContext(LimboContext.class,0);
 		}
-		public InstrucaoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_instrucao; }
+		public OInstrucaoContext(InstrucaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterInstrucao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOInstrucao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitInstrucao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOInstrucao(this);
 		}
 	}
 
@@ -238,55 +268,62 @@ public class OlimpiaParser extends Parser {
 		InstrucaoContext _localctx = new InstrucaoContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_instrucao);
 		try {
-			setState(48);
+			setState(49);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(41);
+				setState(42);
 				declaracao();
 				}
 				break;
 			case 2:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(42);
+				setState(43);
 				atribuicao();
 				}
 				break;
 			case 3:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(43);
+				setState(44);
 				acao();
 				}
 				break;
 			case 4:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(44);
+				setState(45);
 				controle();
 				}
 				break;
 			case 5:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(45);
+				setState(46);
 				repeticao();
 				}
 				break;
 			case 6:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(46);
+				setState(47);
 				funcao();
 				}
 				break;
 			case 7:
+				_localctx = new OInstrucaoContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(47);
+				setState(48);
 				limbo();
 				}
 				break;
@@ -305,27 +342,28 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class DeclaracaoContext extends ParserRuleContext {
-		public TerminalNode PEGASO() { return getToken(OlimpiaParser.PEGASO, 0); }
-		public List<TerminalNode> DIO() { return getTokens(OlimpiaParser.DIO); }
-		public TerminalNode DIO(int i) {
-			return getToken(OlimpiaParser.DIO, i);
-		}
-		public TerminalNode LOG() { return getToken(OlimpiaParser.LOG, 0); }
-		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
-		public OperacaoContext operacao() {
-			return getRuleContext(OperacaoContext.class,0);
-		}
 		public DeclaracaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_declaracao; }
+	 
+		public DeclaracaoContext() { }
+		public void copyFrom(DeclaracaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class ODeclaracaoContext extends DeclaracaoContext {
+		public TerminalNode PEGASO() { return getToken(OlimpiaParser.PEGASO, 0); }
+		public TerminalNode DIO() { return getToken(OlimpiaParser.DIO, 0); }
+		public ODeclaracaoContext(DeclaracaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterDeclaracao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterODeclaracao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitDeclaracao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitODeclaracao(this);
 		}
 	}
 
@@ -333,51 +371,13 @@ public class OlimpiaParser extends Parser {
 		DeclaracaoContext _localctx = new DeclaracaoContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_declaracao);
 		try {
-			setState(60);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(50);
-				match(PEGASO);
-				setState(51);
-				match(DIO);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(52);
-				match(PEGASO);
-				setState(53);
-				match(DIO);
-				setState(54);
-				match(LOG);
-				setState(58);
-				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
-				case 1:
-					{
-					setState(55);
-					match(DIO);
-					}
-					break;
-				case 2:
-					{
-					setState(56);
-					match(HERMES);
-					}
-					break;
-				case 3:
-					{
-					setState(57);
-					operacao();
-					}
-					break;
-				}
-				}
-				break;
+			_localctx = new ODeclaracaoContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(51);
+			match(PEGASO);
+			setState(52);
+			match(DIO);
 			}
 		}
 		catch (RecognitionException re) {
@@ -393,26 +393,40 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AtribuicaoContext extends ParserRuleContext {
-		public List<TerminalNode> DIO() { return getTokens(OlimpiaParser.DIO); }
-		public TerminalNode DIO(int i) {
-			return getToken(OlimpiaParser.DIO, i);
-		}
-		public TerminalNode LOG() { return getToken(OlimpiaParser.LOG, 0); }
-		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
-		public OperacaoContext operacao() {
-			return getRuleContext(OperacaoContext.class,0);
-		}
 		public AtribuicaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_atribuicao; }
+	 
+		public AtribuicaoContext() { }
+		public void copyFrom(AtribuicaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OAtribuicaoContext extends AtribuicaoContext {
+		public TerminalNode LOG() { return getToken(OlimpiaParser.LOG, 0); }
+		public DeclaracaoContext declaracao() {
+			return getRuleContext(DeclaracaoContext.class,0);
+		}
+		public List<TerminalNode> DIO() { return getTokens(OlimpiaParser.DIO); }
+		public TerminalNode DIO(int i) {
+			return getToken(OlimpiaParser.DIO, i);
+		}
+		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
+		public TerminalNode HELIOS() { return getToken(OlimpiaParser.HELIOS, 0); }
+		public TerminalNode HESTIA() { return getToken(OlimpiaParser.HESTIA, 0); }
+		public OperacaoContext operacao() {
+			return getRuleContext(OperacaoContext.class,0);
+		}
+		public OAtribuicaoContext(AtribuicaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterAtribuicao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOAtribuicao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitAtribuicao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOAtribuicao(this);
 		}
 	}
 
@@ -420,30 +434,59 @@ public class OlimpiaParser extends Parser {
 		AtribuicaoContext _localctx = new AtribuicaoContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_atribuicao);
 		try {
+			_localctx = new OAtribuicaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
-			match(DIO);
-			setState(63);
-			match(LOG);
-			setState(67);
+			setState(56);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			switch (_input.LA(1)) {
+			case PEGASO:
+				{
+				setState(54);
+				declaracao();
+				}
+				break;
+			case DIO:
+				{
+				setState(55);
+				match(DIO);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			setState(58);
+			match(LOG);
+			setState(64);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
-				setState(64);
+				setState(59);
 				match(DIO);
 				}
 				break;
 			case 2:
 				{
-				setState(65);
+				setState(60);
 				match(HERMES);
 				}
 				break;
 			case 3:
 				{
-				setState(66);
+				setState(61);
+				match(HELIOS);
+				}
+				break;
+			case 4:
+				{
+				setState(62);
+				match(HESTIA);
+				}
+				break;
+			case 5:
+				{
+				setState(63);
 				operacao();
 				}
 				break;
@@ -463,24 +506,35 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AcaoContext extends ParserRuleContext {
-		public TerminalNode ECO() { return getToken(OlimpiaParser.ECO, 0); }
-		public TerminalNode DIO() { return getToken(OlimpiaParser.DIO, 0); }
-		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
-		public OperacaoContext operacao() {
-			return getRuleContext(OperacaoContext.class,0);
-		}
-		public TerminalNode PROF() { return getToken(OlimpiaParser.PROF, 0); }
 		public AcaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_acao; }
+	 
+		public AcaoContext() { }
+		public void copyFrom(AcaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OAcaoContext extends AcaoContext {
+		public TerminalNode ECO() { return getToken(OlimpiaParser.ECO, 0); }
+		public TerminalNode DIO() { return getToken(OlimpiaParser.DIO, 0); }
+		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
+		public TerminalNode HELIOS() { return getToken(OlimpiaParser.HELIOS, 0); }
+		public TerminalNode HESTIA() { return getToken(OlimpiaParser.HESTIA, 0); }
+		public OperacaoContext operacao() {
+			return getRuleContext(OperacaoContext.class,0);
+		}
+		public TerminalNode PROF() { return getToken(OlimpiaParser.PROF, 0); }
+		public OAcaoContext(AcaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterAcao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOAcao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitAcao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOAcao(this);
 		}
 	}
 
@@ -488,32 +542,45 @@ public class OlimpiaParser extends Parser {
 		AcaoContext _localctx = new AcaoContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_acao);
 		try {
-			setState(77);
+			setState(76);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ECO:
+				_localctx = new OAcaoContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(69);
+				setState(66);
 				match(ECO);
-				setState(73);
+				setState(72);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 				case 1:
 					{
-					setState(70);
+					setState(67);
 					match(DIO);
 					}
 					break;
 				case 2:
 					{
-					setState(71);
+					setState(68);
 					match(HERMES);
 					}
 					break;
 				case 3:
 					{
-					setState(72);
+					setState(69);
+					match(HELIOS);
+					}
+					break;
+				case 4:
+					{
+					setState(70);
+					match(HESTIA);
+					}
+					break;
+				case 5:
+					{
+					setState(71);
 					operacao();
 					}
 					break;
@@ -521,11 +588,12 @@ public class OlimpiaParser extends Parser {
 				}
 				break;
 			case PROF:
+				_localctx = new OAcaoContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(75);
+				setState(74);
 				match(PROF);
-				setState(76);
+				setState(75);
 				match(DIO);
 				}
 				break;
@@ -546,23 +614,32 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class OperacaoContext extends ParserRuleContext {
+		public OperacaoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_operacao; }
+	 
+		public OperacaoContext() { }
+		public void copyFrom(OperacaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OOperacaoContext extends OperacaoContext {
 		public OperandoContext operando() {
 			return getRuleContext(OperandoContext.class,0);
 		}
 		public Operacao_caldaContext operacao_calda() {
 			return getRuleContext(Operacao_caldaContext.class,0);
 		}
-		public OperacaoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_operacao; }
+		public OOperacaoContext(OperacaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOperacao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOOperacao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOperacao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOOperacao(this);
 		}
 	}
 
@@ -570,11 +647,12 @@ public class OlimpiaParser extends Parser {
 		OperacaoContext _localctx = new OperacaoContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_operacao);
 		try {
+			_localctx = new OOperacaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79);
+			setState(78);
 			operando();
-			setState(80);
+			setState(79);
 			operacao_calda();
 			}
 		}
@@ -593,6 +671,8 @@ public class OlimpiaParser extends Parser {
 	public static class OperandoContext extends ParserRuleContext {
 		public TerminalNode DIO() { return getToken(OlimpiaParser.DIO, 0); }
 		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
+		public TerminalNode HELIOS() { return getToken(OlimpiaParser.HELIOS, 0); }
+		public TerminalNode HESTIA() { return getToken(OlimpiaParser.HESTIA, 0); }
 		public OperandoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -614,9 +694,9 @@ public class OlimpiaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82);
+			setState(81);
 			_la = _input.LA(1);
-			if ( !(_la==DIO || _la==HERMES) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1966080L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -639,6 +719,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Operacao_caldaContext extends ParserRuleContext {
+		public Operacao_caldaContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_operacao_calda; }
+	 
+		public Operacao_caldaContext() { }
+		public void copyFrom(Operacao_caldaContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OOperacao_caldaContext extends Operacao_caldaContext {
 		public TerminalNode HEFESTO() { return getToken(OlimpiaParser.HEFESTO, 0); }
 		public OperandoContext operando() {
 			return getRuleContext(OperandoContext.class,0);
@@ -649,17 +741,14 @@ public class OlimpiaParser extends Parser {
 		public Operacao_caldaContext operacao_calda(int i) {
 			return getRuleContext(Operacao_caldaContext.class,i);
 		}
-		public Operacao_caldaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_operacao_calda; }
+		public OOperacao_caldaContext(Operacao_caldaContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOperacao_calda(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOOperacao_calda(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOperacao_calda(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOOperacao_calda(this);
 		}
 	}
 
@@ -668,27 +757,28 @@ public class OlimpiaParser extends Parser {
 		enterRule(_localctx, 16, RULE_operacao_calda);
 		try {
 			int _alt;
+			_localctx = new OOperacao_caldaContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(84);
+			setState(83);
 			match(HEFESTO);
-			setState(85);
+			setState(84);
 			operando();
-			setState(89);
+			setState(88);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(86);
+					setState(85);
 					operacao_calda();
 					}
 					} 
 				}
-				setState(91);
+				setState(90);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -705,34 +795,32 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ControleContext extends ParserRuleContext {
-		public TerminalNode ERI() { return getToken(OlimpiaParser.ERI, 0); }
-		public TerminalNode HEC() { return getToken(OlimpiaParser.HEC, 0); }
-		public CondContext cond() {
-			return getRuleContext(CondContext.class,0);
-		}
-		public TerminalNode ATE() { return getToken(OlimpiaParser.ATE, 0); }
-		public TerminalNode JA() { return getToken(OlimpiaParser.JA, 0); }
-		public TerminalNode NUS() { return getToken(OlimpiaParser.NUS, 0); }
-		public List<InstrucaoContext> instrucao() {
-			return getRuleContexts(InstrucaoContext.class);
-		}
-		public InstrucaoContext instrucao(int i) {
-			return getRuleContext(InstrucaoContext.class,i);
-		}
-		public SenaoContext senao() {
-			return getRuleContext(SenaoContext.class,0);
-		}
 		public ControleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_controle; }
+	 
+		public ControleContext() { }
+		public void copyFrom(ControleContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OControleContext extends ControleContext {
+		public SeContext se() {
+			return getRuleContext(SeContext.class,0);
+		}
+		public SenaoContext senao() {
+			return getRuleContext(SenaoContext.class,0);
+		}
+		public OControleContext(ControleContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterControle(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOControle(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitControle(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOControle(this);
 		}
 	}
 
@@ -741,40 +829,17 @@ public class OlimpiaParser extends Parser {
 		enterRule(_localctx, 18, RULE_controle);
 		int _la;
 		try {
+			_localctx = new OControleContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(92);
-			match(ERI);
+			setState(91);
+			se();
 			setState(93);
-			match(HEC);
-			setState(94);
-			cond();
-			setState(95);
-			match(ATE);
-			setState(96);
-			match(JA);
-			setState(100);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
-				{
-				{
-				setState(97);
-				instrucao();
-				}
-				}
-				setState(102);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			setState(103);
-			match(NUS);
-			setState(105);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==HAR) {
 				{
-				setState(104);
+				setState(92);
 				senao();
 				}
 			}
@@ -793,7 +858,105 @@ public class OlimpiaParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
+	public static class SeContext extends ParserRuleContext {
+		public SeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_se; }
+	 
+		public SeContext() { }
+		public void copyFrom(SeContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OSeContext extends SeContext {
+		public TerminalNode ERI() { return getToken(OlimpiaParser.ERI, 0); }
+		public TerminalNode HEC() { return getToken(OlimpiaParser.HEC, 0); }
+		public CondContext cond() {
+			return getRuleContext(CondContext.class,0);
+		}
+		public TerminalNode ATE() { return getToken(OlimpiaParser.ATE, 0); }
+		public TerminalNode JA() { return getToken(OlimpiaParser.JA, 0); }
+		public TerminalNode NUS() { return getToken(OlimpiaParser.NUS, 0); }
+		public List<InstrucaoContext> instrucao() {
+			return getRuleContexts(InstrucaoContext.class);
+		}
+		public InstrucaoContext instrucao(int i) {
+			return getRuleContext(InstrucaoContext.class,i);
+		}
+		public OSeContext(SeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOSe(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOSe(this);
+		}
+	}
+
+	public final SeContext se() throws RecognitionException {
+		SeContext _localctx = new SeContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_se);
+		int _la;
+		try {
+			_localctx = new OSeContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(95);
+			match(ERI);
+			setState(96);
+			match(HEC);
+			setState(97);
+			cond();
+			setState(98);
+			match(ATE);
+			setState(99);
+			match(JA);
+			setState(103);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
+				{
+				{
+				setState(100);
+				instrucao();
+				}
+				}
+				setState(105);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(106);
+			match(NUS);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
 	public static class SenaoContext extends ParserRuleContext {
+		public SenaoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_senao; }
+	 
+		public SenaoContext() { }
+		public void copyFrom(SenaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OSenaoContext extends SenaoContext {
 		public TerminalNode HAR() { return getToken(OlimpiaParser.HAR, 0); }
 		public TerminalNode JA() { return getToken(OlimpiaParser.JA, 0); }
 		public TerminalNode NUS() { return getToken(OlimpiaParser.NUS, 0); }
@@ -803,46 +966,44 @@ public class OlimpiaParser extends Parser {
 		public InstrucaoContext instrucao(int i) {
 			return getRuleContext(InstrucaoContext.class,i);
 		}
-		public SenaoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_senao; }
+		public OSenaoContext(SenaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterSenao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOSenao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitSenao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOSenao(this);
 		}
 	}
 
 	public final SenaoContext senao() throws RecognitionException {
 		SenaoContext _localctx = new SenaoContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_senao);
+		enterRule(_localctx, 22, RULE_senao);
 		int _la;
 		try {
+			_localctx = new OSenaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(107);
-			match(HAR);
 			setState(108);
+			match(HAR);
+			setState(109);
 			match(JA);
-			setState(112);
+			setState(113);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
 				{
 				{
-				setState(109);
+				setState(110);
 				instrucao();
 				}
 				}
-				setState(114);
+				setState(115);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(115);
+			setState(116);
 			match(NUS);
 			}
 		}
@@ -859,6 +1020,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CondContext extends ParserRuleContext {
+		public CondContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_cond; }
+	 
+		public CondContext() { }
+		public void copyFrom(CondContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OCondContext extends CondContext {
 		public List<OperandoContext> operando() {
 			return getRuleContexts(OperandoContext.class);
 		}
@@ -872,44 +1045,42 @@ public class OlimpiaParser extends Parser {
 		public BooleanoContext booleano(int i) {
 			return getRuleContext(BooleanoContext.class,i);
 		}
-		public CondContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_cond; }
+		public OCondContext(CondContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterCond(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOCond(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitCond(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOCond(this);
 		}
 	}
 
 	public final CondContext cond() throws RecognitionException {
 		CondContext _localctx = new CondContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_cond);
+		enterRule(_localctx, 24, RULE_cond);
 		int _la;
 		try {
+			_localctx = new OCondContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(117);
-			operando();
 			setState(118);
-			match(AFRODITE);
-			setState(119);
 			operando();
-			setState(123);
+			setState(119);
+			match(AFRODITE);
+			setState(120);
+			operando();
+			setState(124);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==TEMIS) {
 				{
 				{
-				setState(120);
+				setState(121);
 				booleano();
 				}
 				}
-				setState(125);
+				setState(126);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -928,39 +1099,49 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class BooleanoContext extends ParserRuleContext {
+		public BooleanoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_booleano; }
+	 
+		public BooleanoContext() { }
+		public void copyFrom(BooleanoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OBooleanoContext extends BooleanoContext {
 		public TerminalNode TEMIS() { return getToken(OlimpiaParser.TEMIS, 0); }
 		public TerminalNode HEC() { return getToken(OlimpiaParser.HEC, 0); }
 		public CondContext cond() {
 			return getRuleContext(CondContext.class,0);
 		}
 		public TerminalNode ATE() { return getToken(OlimpiaParser.ATE, 0); }
-		public BooleanoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_booleano; }
+		public OBooleanoContext(BooleanoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterBooleano(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOBooleano(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitBooleano(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOBooleano(this);
 		}
 	}
 
 	public final BooleanoContext booleano() throws RecognitionException {
 		BooleanoContext _localctx = new BooleanoContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_booleano);
+		enterRule(_localctx, 26, RULE_booleano);
 		try {
+			_localctx = new OBooleanoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
-			match(TEMIS);
 			setState(127);
-			match(HEC);
+			match(TEMIS);
 			setState(128);
-			cond();
+			match(HEC);
 			setState(129);
+			cond();
+			setState(130);
 			match(ATE);
 			}
 		}
@@ -977,6 +1158,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RepeticaoContext extends ParserRuleContext {
+		public RepeticaoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_repeticao; }
+	 
+		public RepeticaoContext() { }
+		public void copyFrom(RepeticaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class ORepeticaoContext extends RepeticaoContext {
 		public TerminalNode SIS() { return getToken(OlimpiaParser.SIS, 0); }
 		public TerminalNode HEC() { return getToken(OlimpiaParser.HEC, 0); }
 		public CondContext cond() {
@@ -991,52 +1184,50 @@ public class OlimpiaParser extends Parser {
 		public InstrucaoContext instrucao(int i) {
 			return getRuleContext(InstrucaoContext.class,i);
 		}
-		public RepeticaoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_repeticao; }
+		public ORepeticaoContext(RepeticaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterRepeticao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterORepeticao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitRepeticao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitORepeticao(this);
 		}
 	}
 
 	public final RepeticaoContext repeticao() throws RecognitionException {
 		RepeticaoContext _localctx = new RepeticaoContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_repeticao);
+		enterRule(_localctx, 28, RULE_repeticao);
 		int _la;
 		try {
+			_localctx = new ORepeticaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
-			match(SIS);
 			setState(132);
-			match(HEC);
+			match(SIS);
 			setState(133);
-			cond();
+			match(HEC);
 			setState(134);
-			match(ATE);
+			cond();
 			setState(135);
+			match(ATE);
+			setState(136);
 			match(JA);
-			setState(139);
+			setState(140);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
 				{
 				{
-				setState(136);
+				setState(137);
 				instrucao();
 				}
 				}
-				setState(141);
+				setState(142);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(142);
+			setState(143);
 			match(NUS);
 			}
 		}
@@ -1053,6 +1244,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FuncaoContext extends ParserRuleContext {
+		public FuncaoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_funcao; }
+	 
+		public FuncaoContext() { }
+		public void copyFrom(FuncaoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OFuncaoContext extends FuncaoContext {
 		public TerminalNode PEGASO() { return getToken(OlimpiaParser.PEGASO, 0); }
 		public List<TerminalNode> DIO() { return getTokens(OlimpiaParser.DIO); }
 		public TerminalNode DIO(int i) {
@@ -1064,6 +1267,8 @@ public class OlimpiaParser extends Parser {
 		public TerminalNode ELY() { return getToken(OlimpiaParser.ELY, 0); }
 		public TerminalNode NUS() { return getToken(OlimpiaParser.NUS, 0); }
 		public TerminalNode HERMES() { return getToken(OlimpiaParser.HERMES, 0); }
+		public TerminalNode HELIOS() { return getToken(OlimpiaParser.HELIOS, 0); }
+		public TerminalNode HESTIA() { return getToken(OlimpiaParser.HESTIA, 0); }
 		public List<DeclaracaoContext> declaracao() {
 			return getRuleContexts(DeclaracaoContext.class);
 		}
@@ -1076,70 +1281,68 @@ public class OlimpiaParser extends Parser {
 		public InstrucaoContext instrucao(int i) {
 			return getRuleContext(InstrucaoContext.class,i);
 		}
-		public FuncaoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_funcao; }
+		public OFuncaoContext(FuncaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterFuncao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOFuncao(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitFuncao(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOFuncao(this);
 		}
 	}
 
 	public final FuncaoContext funcao() throws RecognitionException {
 		FuncaoContext _localctx = new FuncaoContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_funcao);
+		enterRule(_localctx, 30, RULE_funcao);
 		int _la;
 		try {
+			_localctx = new OFuncaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(144);
-			match(PEGASO);
 			setState(145);
-			match(DIO);
+			match(PEGASO);
 			setState(146);
+			match(DIO);
+			setState(147);
 			match(HEC);
-			setState(150);
+			setState(151);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==PEGASO) {
 				{
 				{
-				setState(147);
+				setState(148);
 				declaracao();
 				}
 				}
-				setState(152);
+				setState(153);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(153);
-			match(ATE);
 			setState(154);
+			match(ATE);
+			setState(155);
 			match(JA);
-			setState(158);
+			setState(159);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
 				{
 				{
-				setState(155);
+				setState(156);
 				instrucao();
 				}
 				}
-				setState(160);
+				setState(161);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(161);
-			match(ELY);
 			setState(162);
+			match(ELY);
+			setState(163);
 			_la = _input.LA(1);
-			if ( !(_la==DIO || _la==HERMES) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1966080L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1147,7 +1350,7 @@ public class OlimpiaParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(163);
+			setState(164);
 			match(NUS);
 			}
 		}
@@ -1164,6 +1367,18 @@ public class OlimpiaParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class LimboContext extends ParserRuleContext {
+		public LimboContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_limbo; }
+	 
+		public LimboContext() { }
+		public void copyFrom(LimboContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class OLimboContext extends LimboContext {
 		public TerminalNode CAO() { return getToken(OlimpiaParser.CAO, 0); }
 		public TerminalNode DIO() { return getToken(OlimpiaParser.DIO, 0); }
 		public TerminalNode HEC() { return getToken(OlimpiaParser.HEC, 0); }
@@ -1182,66 +1397,64 @@ public class OlimpiaParser extends Parser {
 		public InstrucaoContext instrucao(int i) {
 			return getRuleContext(InstrucaoContext.class,i);
 		}
-		public LimboContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_limbo; }
+		public OLimboContext(LimboContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterLimbo(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).enterOLimbo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitLimbo(this);
+			if ( listener instanceof OlimpiaListener ) ((OlimpiaListener)listener).exitOLimbo(this);
 		}
 	}
 
 	public final LimboContext limbo() throws RecognitionException {
 		LimboContext _localctx = new LimboContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_limbo);
+		enterRule(_localctx, 32, RULE_limbo);
 		int _la;
 		try {
+			_localctx = new OLimboContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(165);
-			match(CAO);
 			setState(166);
-			match(DIO);
+			match(CAO);
 			setState(167);
+			match(DIO);
+			setState(168);
 			match(HEC);
-			setState(171);
+			setState(172);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==PEGASO) {
 				{
 				{
-				setState(168);
+				setState(169);
 				declaracao();
 				}
 				}
-				setState(173);
+				setState(174);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(174);
-			match(ATE);
 			setState(175);
+			match(ATE);
+			setState(176);
 			match(JA);
-			setState(179);
+			setState(180);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 133058L) != 0)) {
 				{
 				{
-				setState(176);
+				setState(177);
 				instrucao();
 				}
 				}
-				setState(181);
+				setState(182);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(182);
+			setState(183);
 			match(NUS);
 			}
 		}
@@ -1257,115 +1470,117 @@ public class OlimpiaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0014\u00b9\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0004\u0001\u0016\u00ba\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
 		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
 		"\u0002\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007"+
 		"\u0002\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b"+
 		"\u0002\f\u0007\f\u0002\r\u0007\r\u0002\u000e\u0007\u000e\u0002\u000f\u0007"+
-		"\u000f\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0005\u0001%\b"+
-		"\u0001\n\u0001\f\u0001(\t\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001"+
-		"\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u00021\b\u0002\u0001"+
-		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
-		"\u0003\u0001\u0003\u0003\u0003;\b\u0003\u0003\u0003=\b\u0003\u0001\u0004"+
-		"\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0003\u0004D\b\u0004"+
-		"\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0003\u0005J\b\u0005"+
-		"\u0001\u0005\u0001\u0005\u0003\u0005N\b\u0005\u0001\u0006\u0001\u0006"+
-		"\u0001\u0006\u0001\u0007\u0001\u0007\u0001\b\u0001\b\u0001\b\u0005\bX"+
-		"\b\b\n\b\f\b[\t\b\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0005"+
-		"\tc\b\t\n\t\f\tf\t\t\u0001\t\u0001\t\u0003\tj\b\t\u0001\n\u0001\n\u0001"+
-		"\n\u0005\no\b\n\n\n\f\nr\t\n\u0001\n\u0001\n\u0001\u000b\u0001\u000b\u0001"+
-		"\u000b\u0001\u000b\u0005\u000bz\b\u000b\n\u000b\f\u000b}\t\u000b\u0001"+
-		"\f\u0001\f\u0001\f\u0001\f\u0001\f\u0001\r\u0001\r\u0001\r\u0001\r\u0001"+
-		"\r\u0001\r\u0005\r\u008a\b\r\n\r\f\r\u008d\t\r\u0001\r\u0001\r\u0001\u000e"+
-		"\u0001\u000e\u0001\u000e\u0001\u000e\u0005\u000e\u0095\b\u000e\n\u000e"+
-		"\f\u000e\u0098\t\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0005\u000e"+
-		"\u009d\b\u000e\n\u000e\f\u000e\u00a0\t\u000e\u0001\u000e\u0001\u000e\u0001"+
-		"\u000e\u0001\u000e\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0005"+
-		"\u000f\u00aa\b\u000f\n\u000f\f\u000f\u00ad\t\u000f\u0001\u000f\u0001\u000f"+
-		"\u0001\u000f\u0005\u000f\u00b2\b\u000f\n\u000f\f\u000f\u00b5\t\u000f\u0001"+
-		"\u000f\u0001\u000f\u0001\u000f\u0000\u0000\u0010\u0000\u0002\u0004\u0006"+
-		"\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a\u001c\u001e\u0000\u0001"+
-		"\u0001\u0000\u0011\u0012\u00c1\u0000 \u0001\u0000\u0000\u0000\u0002&\u0001"+
-		"\u0000\u0000\u0000\u00040\u0001\u0000\u0000\u0000\u0006<\u0001\u0000\u0000"+
-		"\u0000\b>\u0001\u0000\u0000\u0000\nM\u0001\u0000\u0000\u0000\fO\u0001"+
-		"\u0000\u0000\u0000\u000eR\u0001\u0000\u0000\u0000\u0010T\u0001\u0000\u0000"+
-		"\u0000\u0012\\\u0001\u0000\u0000\u0000\u0014k\u0001\u0000\u0000\u0000"+
-		"\u0016u\u0001\u0000\u0000\u0000\u0018~\u0001\u0000\u0000\u0000\u001a\u0083"+
-		"\u0001\u0000\u0000\u0000\u001c\u0090\u0001\u0000\u0000\u0000\u001e\u00a5"+
-		"\u0001\u0000\u0000\u0000 !\u0003\u0002\u0001\u0000!\"\u0005\u0000\u0000"+
-		"\u0001\"\u0001\u0001\u0000\u0000\u0000#%\u0003\u0004\u0002\u0000$#\u0001"+
-		"\u0000\u0000\u0000%(\u0001\u0000\u0000\u0000&$\u0001\u0000\u0000\u0000"+
-		"&\'\u0001\u0000\u0000\u0000\'\u0003\u0001\u0000\u0000\u0000(&\u0001\u0000"+
-		"\u0000\u0000)1\u0003\u0006\u0003\u0000*1\u0003\b\u0004\u0000+1\u0003\n"+
-		"\u0005\u0000,1\u0003\u0012\t\u0000-1\u0003\u001a\r\u0000.1\u0003\u001c"+
-		"\u000e\u0000/1\u0003\u001e\u000f\u00000)\u0001\u0000\u0000\u00000*\u0001"+
-		"\u0000\u0000\u00000+\u0001\u0000\u0000\u00000,\u0001\u0000\u0000\u0000"+
-		"0-\u0001\u0000\u0000\u00000.\u0001\u0000\u0000\u00000/\u0001\u0000\u0000"+
-		"\u00001\u0005\u0001\u0000\u0000\u000023\u0005\u0001\u0000\u00003=\u0005"+
-		"\u0011\u0000\u000045\u0005\u0001\u0000\u000056\u0005\u0011\u0000\u0000"+
-		"6:\u0005\f\u0000\u00007;\u0005\u0011\u0000\u00008;\u0005\u0012\u0000\u0000"+
-		"9;\u0003\f\u0006\u0000:7\u0001\u0000\u0000\u0000:8\u0001\u0000\u0000\u0000"+
-		":9\u0001\u0000\u0000\u0000;=\u0001\u0000\u0000\u0000<2\u0001\u0000\u0000"+
-		"\u0000<4\u0001\u0000\u0000\u0000=\u0007\u0001\u0000\u0000\u0000>?\u0005"+
-		"\u0011\u0000\u0000?C\u0005\f\u0000\u0000@D\u0005\u0011\u0000\u0000AD\u0005"+
-		"\u0012\u0000\u0000BD\u0003\f\u0006\u0000C@\u0001\u0000\u0000\u0000CA\u0001"+
-		"\u0000\u0000\u0000CB\u0001\u0000\u0000\u0000D\t\u0001\u0000\u0000\u0000"+
-		"EI\u0005\u0007\u0000\u0000FJ\u0005\u0011\u0000\u0000GJ\u0005\u0012\u0000"+
-		"\u0000HJ\u0003\f\u0006\u0000IF\u0001\u0000\u0000\u0000IG\u0001\u0000\u0000"+
-		"\u0000IH\u0001\u0000\u0000\u0000JN\u0001\u0000\u0000\u0000KL\u0005\b\u0000"+
-		"\u0000LN\u0005\u0011\u0000\u0000ME\u0001\u0000\u0000\u0000MK\u0001\u0000"+
-		"\u0000\u0000N\u000b\u0001\u0000\u0000\u0000OP\u0003\u000e\u0007\u0000"+
-		"PQ\u0003\u0010\b\u0000Q\r\u0001\u0000\u0000\u0000RS\u0007\u0000\u0000"+
-		"\u0000S\u000f\u0001\u0000\u0000\u0000TU\u0005\r\u0000\u0000UY\u0003\u000e"+
-		"\u0007\u0000VX\u0003\u0010\b\u0000WV\u0001\u0000\u0000\u0000X[\u0001\u0000"+
-		"\u0000\u0000YW\u0001\u0000\u0000\u0000YZ\u0001\u0000\u0000\u0000Z\u0011"+
-		"\u0001\u0000\u0000\u0000[Y\u0001\u0000\u0000\u0000\\]\u0005\n\u0000\u0000"+
-		"]^\u0005\u0002\u0000\u0000^_\u0003\u0016\u000b\u0000_`\u0005\u0003\u0000"+
-		"\u0000`d\u0005\u0004\u0000\u0000ac\u0003\u0004\u0002\u0000ba\u0001\u0000"+
-		"\u0000\u0000cf\u0001\u0000\u0000\u0000db\u0001\u0000\u0000\u0000de\u0001"+
-		"\u0000\u0000\u0000eg\u0001\u0000\u0000\u0000fd\u0001\u0000\u0000\u0000"+
-		"gi\u0005\u0005\u0000\u0000hj\u0003\u0014\n\u0000ih\u0001\u0000\u0000\u0000"+
-		"ij\u0001\u0000\u0000\u0000j\u0013\u0001\u0000\u0000\u0000kl\u0005\u000b"+
-		"\u0000\u0000lp\u0005\u0004\u0000\u0000mo\u0003\u0004\u0002\u0000nm\u0001"+
-		"\u0000\u0000\u0000or\u0001\u0000\u0000\u0000pn\u0001\u0000\u0000\u0000"+
-		"pq\u0001\u0000\u0000\u0000qs\u0001\u0000\u0000\u0000rp\u0001\u0000\u0000"+
-		"\u0000st\u0005\u0005\u0000\u0000t\u0015\u0001\u0000\u0000\u0000uv\u0003"+
-		"\u000e\u0007\u0000vw\u0005\u000f\u0000\u0000w{\u0003\u000e\u0007\u0000"+
-		"xz\u0003\u0018\f\u0000yx\u0001\u0000\u0000\u0000z}\u0001\u0000\u0000\u0000"+
-		"{y\u0001\u0000\u0000\u0000{|\u0001\u0000\u0000\u0000|\u0017\u0001\u0000"+
-		"\u0000\u0000}{\u0001\u0000\u0000\u0000~\u007f\u0005\u000e\u0000\u0000"+
-		"\u007f\u0080\u0005\u0002\u0000\u0000\u0080\u0081\u0003\u0016\u000b\u0000"+
-		"\u0081\u0082\u0005\u0003\u0000\u0000\u0082\u0019\u0001\u0000\u0000\u0000"+
-		"\u0083\u0084\u0005\t\u0000\u0000\u0084\u0085\u0005\u0002\u0000\u0000\u0085"+
-		"\u0086\u0003\u0016\u000b\u0000\u0086\u0087\u0005\u0003\u0000\u0000\u0087"+
-		"\u008b\u0005\u0004\u0000\u0000\u0088\u008a\u0003\u0004\u0002\u0000\u0089"+
-		"\u0088\u0001\u0000\u0000\u0000\u008a\u008d\u0001\u0000\u0000\u0000\u008b"+
-		"\u0089\u0001\u0000\u0000\u0000\u008b\u008c\u0001\u0000\u0000\u0000\u008c"+
-		"\u008e\u0001\u0000\u0000\u0000\u008d\u008b\u0001\u0000\u0000\u0000\u008e"+
-		"\u008f\u0005\u0005\u0000\u0000\u008f\u001b\u0001\u0000\u0000\u0000\u0090"+
-		"\u0091\u0005\u0001\u0000\u0000\u0091\u0092\u0005\u0011\u0000\u0000\u0092"+
-		"\u0096\u0005\u0002\u0000\u0000\u0093\u0095\u0003\u0006\u0003\u0000\u0094"+
-		"\u0093\u0001\u0000\u0000\u0000\u0095\u0098\u0001\u0000\u0000\u0000\u0096"+
-		"\u0094\u0001\u0000\u0000\u0000\u0096\u0097\u0001\u0000\u0000\u0000\u0097"+
-		"\u0099\u0001\u0000\u0000\u0000\u0098\u0096\u0001\u0000\u0000\u0000\u0099"+
-		"\u009a\u0005\u0003\u0000\u0000\u009a\u009e\u0005\u0004\u0000\u0000\u009b"+
-		"\u009d\u0003\u0004\u0002\u0000\u009c\u009b\u0001\u0000\u0000\u0000\u009d"+
-		"\u00a0\u0001\u0000\u0000\u0000\u009e\u009c\u0001\u0000\u0000\u0000\u009e"+
-		"\u009f\u0001\u0000\u0000\u0000\u009f\u00a1\u0001\u0000\u0000\u0000\u00a0"+
-		"\u009e\u0001\u0000\u0000\u0000\u00a1\u00a2\u0005\u0010\u0000\u0000\u00a2"+
-		"\u00a3\u0007\u0000\u0000\u0000\u00a3\u00a4\u0005\u0005\u0000\u0000\u00a4"+
-		"\u001d\u0001\u0000\u0000\u0000\u00a5\u00a6\u0005\u0006\u0000\u0000\u00a6"+
-		"\u00a7\u0005\u0011\u0000\u0000\u00a7\u00ab\u0005\u0002\u0000\u0000\u00a8"+
-		"\u00aa\u0003\u0006\u0003\u0000\u00a9\u00a8\u0001\u0000\u0000\u0000\u00aa"+
-		"\u00ad\u0001\u0000\u0000\u0000\u00ab\u00a9\u0001\u0000\u0000\u0000\u00ab"+
-		"\u00ac\u0001\u0000\u0000\u0000\u00ac\u00ae\u0001\u0000\u0000\u0000\u00ad"+
-		"\u00ab\u0001\u0000\u0000\u0000\u00ae\u00af\u0005\u0003\u0000\u0000\u00af"+
-		"\u00b3\u0005\u0004\u0000\u0000\u00b0\u00b2\u0003\u0004\u0002\u0000\u00b1"+
-		"\u00b0\u0001\u0000\u0000\u0000\u00b2\u00b5\u0001\u0000\u0000\u0000\u00b3"+
-		"\u00b1\u0001\u0000\u0000\u0000\u00b3\u00b4\u0001\u0000\u0000\u0000\u00b4"+
-		"\u00b6\u0001\u0000\u0000\u0000\u00b5\u00b3\u0001\u0000\u0000\u0000\u00b6"+
-		"\u00b7\u0005\u0005\u0000\u0000\u00b7\u001f\u0001\u0000\u0000\u0000\u0011"+
-		"&0:<CIMYdip{\u008b\u0096\u009e\u00ab\u00b3";
+		"\u000f\u0002\u0010\u0007\u0010\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0001\u0004\u0001\'\b\u0001\u000b\u0001\f\u0001(\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002"+
+		"2\b\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004"+
+		"\u0003\u00049\b\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004"+
+		"\u0001\u0004\u0001\u0004\u0003\u0004A\b\u0004\u0001\u0005\u0001\u0005"+
+		"\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0003\u0005I\b\u0005"+
+		"\u0001\u0005\u0001\u0005\u0003\u0005M\b\u0005\u0001\u0006\u0001\u0006"+
+		"\u0001\u0006\u0001\u0007\u0001\u0007\u0001\b\u0001\b\u0001\b\u0005\bW"+
+		"\b\b\n\b\f\bZ\t\b\u0001\t\u0001\t\u0003\t^\b\t\u0001\n\u0001\n\u0001\n"+
+		"\u0001\n\u0001\n\u0001\n\u0005\nf\b\n\n\n\f\ni\t\n\u0001\n\u0001\n\u0001"+
+		"\u000b\u0001\u000b\u0001\u000b\u0005\u000bp\b\u000b\n\u000b\f\u000bs\t"+
+		"\u000b\u0001\u000b\u0001\u000b\u0001\f\u0001\f\u0001\f\u0001\f\u0005\f"+
+		"{\b\f\n\f\f\f~\t\f\u0001\r\u0001\r\u0001\r\u0001\r\u0001\r\u0001\u000e"+
+		"\u0001\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0001\u000e\u0005\u000e"+
+		"\u008b\b\u000e\n\u000e\f\u000e\u008e\t\u000e\u0001\u000e\u0001\u000e\u0001"+
+		"\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0005\u000f\u0096\b\u000f\n"+
+		"\u000f\f\u000f\u0099\t\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0005"+
+		"\u000f\u009e\b\u000f\n\u000f\f\u000f\u00a1\t\u000f\u0001\u000f\u0001\u000f"+
+		"\u0001\u000f\u0001\u000f\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0010"+
+		"\u0005\u0010\u00ab\b\u0010\n\u0010\f\u0010\u00ae\t\u0010\u0001\u0010\u0001"+
+		"\u0010\u0001\u0010\u0005\u0010\u00b3\b\u0010\n\u0010\f\u0010\u00b6\t\u0010"+
+		"\u0001\u0010\u0001\u0010\u0001\u0010\u0000\u0000\u0011\u0000\u0002\u0004"+
+		"\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a\u001c\u001e \u0000"+
+		"\u0001\u0001\u0000\u0011\u0014\u00c3\u0000\"\u0001\u0000\u0000\u0000\u0002"+
+		"&\u0001\u0000\u0000\u0000\u00041\u0001\u0000\u0000\u0000\u00063\u0001"+
+		"\u0000\u0000\u0000\b8\u0001\u0000\u0000\u0000\nL\u0001\u0000\u0000\u0000"+
+		"\fN\u0001\u0000\u0000\u0000\u000eQ\u0001\u0000\u0000\u0000\u0010S\u0001"+
+		"\u0000\u0000\u0000\u0012[\u0001\u0000\u0000\u0000\u0014_\u0001\u0000\u0000"+
+		"\u0000\u0016l\u0001\u0000\u0000\u0000\u0018v\u0001\u0000\u0000\u0000\u001a"+
+		"\u007f\u0001\u0000\u0000\u0000\u001c\u0084\u0001\u0000\u0000\u0000\u001e"+
+		"\u0091\u0001\u0000\u0000\u0000 \u00a6\u0001\u0000\u0000\u0000\"#\u0003"+
+		"\u0002\u0001\u0000#$\u0005\u0000\u0000\u0001$\u0001\u0001\u0000\u0000"+
+		"\u0000%\'\u0003\u0004\u0002\u0000&%\u0001\u0000\u0000\u0000\'(\u0001\u0000"+
+		"\u0000\u0000(&\u0001\u0000\u0000\u0000()\u0001\u0000\u0000\u0000)\u0003"+
+		"\u0001\u0000\u0000\u0000*2\u0003\u0006\u0003\u0000+2\u0003\b\u0004\u0000"+
+		",2\u0003\n\u0005\u0000-2\u0003\u0012\t\u0000.2\u0003\u001c\u000e\u0000"+
+		"/2\u0003\u001e\u000f\u000002\u0003 \u0010\u00001*\u0001\u0000\u0000\u0000"+
+		"1+\u0001\u0000\u0000\u00001,\u0001\u0000\u0000\u00001-\u0001\u0000\u0000"+
+		"\u00001.\u0001\u0000\u0000\u00001/\u0001\u0000\u0000\u000010\u0001\u0000"+
+		"\u0000\u00002\u0005\u0001\u0000\u0000\u000034\u0005\u0001\u0000\u0000"+
+		"45\u0005\u0011\u0000\u00005\u0007\u0001\u0000\u0000\u000069\u0003\u0006"+
+		"\u0003\u000079\u0005\u0011\u0000\u000086\u0001\u0000\u0000\u000087\u0001"+
+		"\u0000\u0000\u00009:\u0001\u0000\u0000\u0000:@\u0005\f\u0000\u0000;A\u0005"+
+		"\u0011\u0000\u0000<A\u0005\u0012\u0000\u0000=A\u0005\u0013\u0000\u0000"+
+		">A\u0005\u0014\u0000\u0000?A\u0003\f\u0006\u0000@;\u0001\u0000\u0000\u0000"+
+		"@<\u0001\u0000\u0000\u0000@=\u0001\u0000\u0000\u0000@>\u0001\u0000\u0000"+
+		"\u0000@?\u0001\u0000\u0000\u0000A\t\u0001\u0000\u0000\u0000BH\u0005\u0007"+
+		"\u0000\u0000CI\u0005\u0011\u0000\u0000DI\u0005\u0012\u0000\u0000EI\u0005"+
+		"\u0013\u0000\u0000FI\u0005\u0014\u0000\u0000GI\u0003\f\u0006\u0000HC\u0001"+
+		"\u0000\u0000\u0000HD\u0001\u0000\u0000\u0000HE\u0001\u0000\u0000\u0000"+
+		"HF\u0001\u0000\u0000\u0000HG\u0001\u0000\u0000\u0000IM\u0001\u0000\u0000"+
+		"\u0000JK\u0005\b\u0000\u0000KM\u0005\u0011\u0000\u0000LB\u0001\u0000\u0000"+
+		"\u0000LJ\u0001\u0000\u0000\u0000M\u000b\u0001\u0000\u0000\u0000NO\u0003"+
+		"\u000e\u0007\u0000OP\u0003\u0010\b\u0000P\r\u0001\u0000\u0000\u0000QR"+
+		"\u0007\u0000\u0000\u0000R\u000f\u0001\u0000\u0000\u0000ST\u0005\r\u0000"+
+		"\u0000TX\u0003\u000e\u0007\u0000UW\u0003\u0010\b\u0000VU\u0001\u0000\u0000"+
+		"\u0000WZ\u0001\u0000\u0000\u0000XV\u0001\u0000\u0000\u0000XY\u0001\u0000"+
+		"\u0000\u0000Y\u0011\u0001\u0000\u0000\u0000ZX\u0001\u0000\u0000\u0000"+
+		"[]\u0003\u0014\n\u0000\\^\u0003\u0016\u000b\u0000]\\\u0001\u0000\u0000"+
+		"\u0000]^\u0001\u0000\u0000\u0000^\u0013\u0001\u0000\u0000\u0000_`\u0005"+
+		"\n\u0000\u0000`a\u0005\u0002\u0000\u0000ab\u0003\u0018\f\u0000bc\u0005"+
+		"\u0003\u0000\u0000cg\u0005\u0004\u0000\u0000df\u0003\u0004\u0002\u0000"+
+		"ed\u0001\u0000\u0000\u0000fi\u0001\u0000\u0000\u0000ge\u0001\u0000\u0000"+
+		"\u0000gh\u0001\u0000\u0000\u0000hj\u0001\u0000\u0000\u0000ig\u0001\u0000"+
+		"\u0000\u0000jk\u0005\u0005\u0000\u0000k\u0015\u0001\u0000\u0000\u0000"+
+		"lm\u0005\u000b\u0000\u0000mq\u0005\u0004\u0000\u0000np\u0003\u0004\u0002"+
+		"\u0000on\u0001\u0000\u0000\u0000ps\u0001\u0000\u0000\u0000qo\u0001\u0000"+
+		"\u0000\u0000qr\u0001\u0000\u0000\u0000rt\u0001\u0000\u0000\u0000sq\u0001"+
+		"\u0000\u0000\u0000tu\u0005\u0005\u0000\u0000u\u0017\u0001\u0000\u0000"+
+		"\u0000vw\u0003\u000e\u0007\u0000wx\u0005\u000f\u0000\u0000x|\u0003\u000e"+
+		"\u0007\u0000y{\u0003\u001a\r\u0000zy\u0001\u0000\u0000\u0000{~\u0001\u0000"+
+		"\u0000\u0000|z\u0001\u0000\u0000\u0000|}\u0001\u0000\u0000\u0000}\u0019"+
+		"\u0001\u0000\u0000\u0000~|\u0001\u0000\u0000\u0000\u007f\u0080\u0005\u000e"+
+		"\u0000\u0000\u0080\u0081\u0005\u0002\u0000\u0000\u0081\u0082\u0003\u0018"+
+		"\f\u0000\u0082\u0083\u0005\u0003\u0000\u0000\u0083\u001b\u0001\u0000\u0000"+
+		"\u0000\u0084\u0085\u0005\t\u0000\u0000\u0085\u0086\u0005\u0002\u0000\u0000"+
+		"\u0086\u0087\u0003\u0018\f\u0000\u0087\u0088\u0005\u0003\u0000\u0000\u0088"+
+		"\u008c\u0005\u0004\u0000\u0000\u0089\u008b\u0003\u0004\u0002\u0000\u008a"+
+		"\u0089\u0001\u0000\u0000\u0000\u008b\u008e\u0001\u0000\u0000\u0000\u008c"+
+		"\u008a\u0001\u0000\u0000\u0000\u008c\u008d\u0001\u0000\u0000\u0000\u008d"+
+		"\u008f\u0001\u0000\u0000\u0000\u008e\u008c\u0001\u0000\u0000\u0000\u008f"+
+		"\u0090\u0005\u0005\u0000\u0000\u0090\u001d\u0001\u0000\u0000\u0000\u0091"+
+		"\u0092\u0005\u0001\u0000\u0000\u0092\u0093\u0005\u0011\u0000\u0000\u0093"+
+		"\u0097\u0005\u0002\u0000\u0000\u0094\u0096\u0003\u0006\u0003\u0000\u0095"+
+		"\u0094\u0001\u0000\u0000\u0000\u0096\u0099\u0001\u0000\u0000\u0000\u0097"+
+		"\u0095\u0001\u0000\u0000\u0000\u0097\u0098\u0001\u0000\u0000\u0000\u0098"+
+		"\u009a\u0001\u0000\u0000\u0000\u0099\u0097\u0001\u0000\u0000\u0000\u009a"+
+		"\u009b\u0005\u0003\u0000\u0000\u009b\u009f\u0005\u0004\u0000\u0000\u009c"+
+		"\u009e\u0003\u0004\u0002\u0000\u009d\u009c\u0001\u0000\u0000\u0000\u009e"+
+		"\u00a1\u0001\u0000\u0000\u0000\u009f\u009d\u0001\u0000\u0000\u0000\u009f"+
+		"\u00a0\u0001\u0000\u0000\u0000\u00a0\u00a2\u0001\u0000\u0000\u0000\u00a1"+
+		"\u009f\u0001\u0000\u0000\u0000\u00a2\u00a3\u0005\u0010\u0000\u0000\u00a3"+
+		"\u00a4\u0007\u0000\u0000\u0000\u00a4\u00a5\u0005\u0005\u0000\u0000\u00a5"+
+		"\u001f\u0001\u0000\u0000\u0000\u00a6\u00a7\u0005\u0006\u0000\u0000\u00a7"+
+		"\u00a8\u0005\u0011\u0000\u0000\u00a8\u00ac\u0005\u0002\u0000\u0000\u00a9"+
+		"\u00ab\u0003\u0006\u0003\u0000\u00aa\u00a9\u0001\u0000\u0000\u0000\u00ab"+
+		"\u00ae\u0001\u0000\u0000\u0000\u00ac\u00aa\u0001\u0000\u0000\u0000\u00ac"+
+		"\u00ad\u0001\u0000\u0000\u0000\u00ad\u00af\u0001\u0000\u0000\u0000\u00ae"+
+		"\u00ac\u0001\u0000\u0000\u0000\u00af\u00b0\u0005\u0003\u0000\u0000\u00b0"+
+		"\u00b4\u0005\u0004\u0000\u0000\u00b1\u00b3\u0003\u0004\u0002\u0000\u00b2"+
+		"\u00b1\u0001\u0000\u0000\u0000\u00b3\u00b6\u0001\u0000\u0000\u0000\u00b4"+
+		"\u00b2\u0001\u0000\u0000\u0000\u00b4\u00b5\u0001\u0000\u0000\u0000\u00b5"+
+		"\u00b7\u0001\u0000\u0000\u0000\u00b6\u00b4\u0001\u0000\u0000\u0000\u00b7"+
+		"\u00b8\u0005\u0005\u0000\u0000\u00b8!\u0001\u0000\u0000\u0000\u0010(1"+
+		"8@HLX]gq|\u008c\u0097\u009f\u00ac\u00b4";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

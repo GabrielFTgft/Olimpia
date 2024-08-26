@@ -16,85 +16,85 @@ public class OlimpiaBaseListener implements OlimpiaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInicio(OlimpiaParser.InicioContext ctx) { }
+	@Override public void enterOInicio(OlimpiaParser.OInicioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInicio(OlimpiaParser.InicioContext ctx) { }
+	@Override public void exitOInicio(OlimpiaParser.OInicioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAlgoritmo(OlimpiaParser.AlgoritmoContext ctx) { }
+	@Override public void enterOAlgoritmo(OlimpiaParser.OAlgoritmoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAlgoritmo(OlimpiaParser.AlgoritmoContext ctx) { }
+	@Override public void exitOAlgoritmo(OlimpiaParser.OAlgoritmoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstrucao(OlimpiaParser.InstrucaoContext ctx) { }
+	@Override public void enterOInstrucao(OlimpiaParser.OInstrucaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstrucao(OlimpiaParser.InstrucaoContext ctx) { }
+	@Override public void exitOInstrucao(OlimpiaParser.OInstrucaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao(OlimpiaParser.DeclaracaoContext ctx) { }
+	@Override public void enterODeclaracao(OlimpiaParser.ODeclaracaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao(OlimpiaParser.DeclaracaoContext ctx) { }
+	@Override public void exitODeclaracao(OlimpiaParser.ODeclaracaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtribuicao(OlimpiaParser.AtribuicaoContext ctx) { }
+	@Override public void enterOAtribuicao(OlimpiaParser.OAtribuicaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtribuicao(OlimpiaParser.AtribuicaoContext ctx) { }
+	@Override public void exitOAtribuicao(OlimpiaParser.OAtribuicaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAcao(OlimpiaParser.AcaoContext ctx) { }
+	@Override public void enterOAcao(OlimpiaParser.OAcaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAcao(OlimpiaParser.AcaoContext ctx) { }
+	@Override public void exitOAcao(OlimpiaParser.OAcaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperacao(OlimpiaParser.OperacaoContext ctx) { }
+	@Override public void enterOOperacao(OlimpiaParser.OOperacaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperacao(OlimpiaParser.OperacaoContext ctx) { }
+	@Override public void exitOOperacao(OlimpiaParser.OOperacaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -112,97 +112,109 @@ public class OlimpiaBaseListener implements OlimpiaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperacao_calda(OlimpiaParser.Operacao_caldaContext ctx) { }
+	@Override public void enterOOperacao_calda(OlimpiaParser.OOperacao_caldaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperacao_calda(OlimpiaParser.Operacao_caldaContext ctx) { }
+	@Override public void exitOOperacao_calda(OlimpiaParser.OOperacao_caldaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterControle(OlimpiaParser.ControleContext ctx) { }
+	@Override public void enterOControle(OlimpiaParser.OControleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitControle(OlimpiaParser.ControleContext ctx) { }
+	@Override public void exitOControle(OlimpiaParser.OControleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSenao(OlimpiaParser.SenaoContext ctx) { }
+	@Override public void enterOSe(OlimpiaParser.OSeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSenao(OlimpiaParser.SenaoContext ctx) { }
+	@Override public void exitOSe(OlimpiaParser.OSeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCond(OlimpiaParser.CondContext ctx) { }
+	@Override public void enterOSenao(OlimpiaParser.OSenaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCond(OlimpiaParser.CondContext ctx) { }
+	@Override public void exitOSenao(OlimpiaParser.OSenaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleano(OlimpiaParser.BooleanoContext ctx) { }
+	@Override public void enterOCond(OlimpiaParser.OCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleano(OlimpiaParser.BooleanoContext ctx) { }
+	@Override public void exitOCond(OlimpiaParser.OCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRepeticao(OlimpiaParser.RepeticaoContext ctx) { }
+	@Override public void enterOBooleano(OlimpiaParser.OBooleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRepeticao(OlimpiaParser.RepeticaoContext ctx) { }
+	@Override public void exitOBooleano(OlimpiaParser.OBooleanoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncao(OlimpiaParser.FuncaoContext ctx) { }
+	@Override public void enterORepeticao(OlimpiaParser.ORepeticaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncao(OlimpiaParser.FuncaoContext ctx) { }
+	@Override public void exitORepeticao(OlimpiaParser.ORepeticaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLimbo(OlimpiaParser.LimboContext ctx) { }
+	@Override public void enterOFuncao(OlimpiaParser.OFuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLimbo(OlimpiaParser.LimboContext ctx) { }
+	@Override public void exitOFuncao(OlimpiaParser.OFuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOLimbo(OlimpiaParser.OLimboContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOLimbo(OlimpiaParser.OLimboContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
